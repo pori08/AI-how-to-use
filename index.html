@@ -109,84 +109,6 @@
             margin: 24px auto;
         }
 
-        /* Table */
-        .table-container {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            white-space: nowrap;
-        }
-        th, td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #eee;
-        }
-        th {
-            background-color: var(--main);
-            color: white;
-            position: sticky;
-            left: 0;
-        }
-        td {
-            background-color: white;
-        }
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
-        tbody tr:hover td {
-            background-color: var(--sub);
-        }
-
-        /* Mobile Table */
-        @media (max-width: 768px) {
-            .table-container {
-                overflow-x: hidden;
-            }
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            tr {
-                border: 1px solid #ccc;
-                margin-bottom: 1rem;
-                border-radius: 16px;
-                overflow: hidden;
-            }
-            td {
-                border: none;
-                border-bottom: 1px solid #eee;
-                position: relative;
-                padding-left: 50%;
-                text-align: right;
-            }
-            td:last-child {
-                border-bottom: none;
-            }
-            td::before {
-                position: absolute;
-                top: 0;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: var(--main);
-            }
-            td:nth-of-type(1)::before { content: "Name:"; }
-            td:nth-of-type(2)::before { content: "主な生成物:"; }
-            td:nth-of-type(3)::before { content: "無料枠:"; }
-            td:nth-of-type(4)::before { content: "日本語UI:"; }
-            td:nth-of-type(5)::before { content: "スタート手順:"; }
-            td:nth-of-type(6)::before { content: "コツ:"; }
-        }
-
         /* Examples */
         .example-grid {
             display: grid;
@@ -219,14 +141,14 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Manuals */
-        .tool-manual h3 {
+        /* AI Details */
+        .ai-detail-item h3 {
             margin-top: 0;
         }
-        .tool-manual p {
-            margin-bottom: 0;
+        .ai-detail-item p {
+            margin-bottom: 0.5rem;
         }
-        .tool-manual strong {
+        .ai-detail-item strong {
             color: var(--main);
         }
 
@@ -331,8 +253,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#tools">AI比較表</a>
-                <a href="#manuals">使い方解説</a>
+                <a href="#ai-details">AIツール詳細</a>
                 <a href="#examples">活用事例</a>
                 <a href="#how-to">3ステップ</a>
             </nav>
@@ -346,95 +267,96 @@
             <img src="https://storage.googleapis.com/app-assets-replit-com/images/1720158317313_3011c151d3b9615a4b6ac01e32218287.svg" alt="AI Illustration" class="hero-img">
         </section>
 
-        <section id="tools">
-            <h2>AIツール比較表</h2>
-            <div class="box table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>主な生成物</th>
-                            <th>無料枠</th>
-                            <th>日本語UI</th>
-                            <th>スタート手順</th>
-                            <th>コツ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>ChatGPT</td>
-                            <td>テキスト, コード</td>
-                            <td>あり</td>
-                            <td>✅</td>
-                            <td>Google/MSアカウント</td>
-                            <td>役割を与えて深掘り質問</td>
-                        </tr>
-                        <tr>
-                            <td>Gemini</td>
-                            <td>テキスト, 画像, コード</td>
-                            <td>あり</td>
-                            <td>✅</td>
-                            <td>Googleアカウント</td>
-                            <td>画像読み込みが得意</td>
-                        </tr>
-                        <tr>
-                            <td>Claude</td>
-                            <td>テキスト, コード</td>
-                            <td>あり</td>
-                            <td>✅</td>
-                            <td>メールアドレス</td>
-                            <td>長文PDFの要約・分析</td>
-                        </tr>
-                        <tr>
-                            <td>SUNO</td>
-                            <td>音楽, 楽曲</td>
-                            <td>あり</td>
-                            <td>✅</td>
-                            <td>Google/MSアカウント</td>
-                            <td>[Verse] [Chorus]で構成指示</td>
-                        </tr>
-                        <tr>
-                            <td>GenSpark</td>
-                            <td>プレゼン資料</td>
-                            <td>あり</td>
-                            <td>○</td>
-                            <td>Googleアカウント</td>
-                            <td>箇条書きで骨子を渡す</td>
-                        </tr>
-                        <tr>
-                            <td>Manus</td>
-                            <td>マインドマップ</td>
-                            <td>あり</td>
-                            <td>○</td>
-                            <td>Googleアカウント</td>
-                            <td>階層構造を意識して入力</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section id="ai-details">
+            <h2>AIツール詳細解説</h2>
+            <div class="box ai-detail-item">
+                <h3>ChatGPT</h3>
+                <p><strong>概要:</strong> OpenAIが開発した、テキストベースの対話型AIです。質問応答、文章作成、要約、翻訳、プログラミングコード生成など、幅広いタスクに対応します。</p>
+                <p><strong>使い方:</strong> チャット形式で質問や命令を入力するだけです。例えば、「〇〇について教えて」「この文章を要約して」といった具体的な指示を与えます。</p>
+                <p><strong>活用例:</strong>
+                    <ul>
+                        <li>企画書のドラフト作成</li>
+                        <li>メールの返信文案作成</li>
+                        <li>プログラミングのデバッグ支援</li>
+                        <li>アイデア出しのブレインストーミング</li>
+                    </ul>
+                </p>
+                <p><strong>コツ:</strong> AIに「あなたはプロの編集者です」のように役割を与えたり、「〇〇の視点から回答して」と条件を付けたりすると、より質の高い回答が得られます。</p>
             </div>
-        </section>
-        
-        <section id="manuals">
-            <h2>AIツール別ワンポイント解説</h2>
-            <div class="box tool-manual">
-                <h3>ChatGPT / Gemini / Claude (対話型)</h3>
-                <p><strong>基本:</strong> チャット画面に質問や命令をテキストで入力します。<br>
-                   <strong>コツ:</strong> あなたに「プロの編集者」「マーケター」といった役割を与えると、回答の質が向上します。「以下の文章を、小学生にも分かるように書き直して」「このサービスのキャッチコピーを10個考えて」のように、具体的な指示を出すのがポイントです。</p>
+
+            <div class="box ai-detail-item">
+                <h3>Gemini</h3>
+                <p><strong>概要:</strong> Googleが開発した、テキスト、画像、音声、動画など複数の情報を理解・生成できるマルチモーダルAIです。複雑な情報処理や創造的なタスクに強みがあります。</p>
+                <p><strong>使い方:</strong> ChatGPTと同様にチャット形式で利用できます。画像や音声ファイルをアップロードして、それらに関する質問をすることも可能です。</p>
+                <p><strong>活用例:</strong>
+                    <ul>
+                        <li>写真の内容を分析し、説明文を生成</li>
+                        <li>グラフのデータから傾向を読み取り、レポートを作成</li>
+                        <li>手書きのメモからアイデアを整理</li>
+                        <li>動画の内容を要約し、ハイライトを抽出</li>
+                    </ul>
+                </p>
+                <p><strong>コツ:</strong> 画像や図表を読み込ませて質問すると、その内容を深く理解した上で回答してくれるため、視覚情報を含むタスクで特に威力を発揮します。</p>
             </div>
-            <div class="box tool-manual">
-                <h3>SUNO (音楽生成)</h3>
-                <p><strong>基本:</strong> 「Style of Music」に曲調（例: J-POP, City Pop）、「Lyrics」に歌詞を入力して「Create」を押します。<br>
-                   <strong>コツ:</strong> 歌詞の途中に [Verse] (Aメロ), [Chorus] (サビ), [Bridge] (Cメロ), [Guitar Solo] のような構成タグを入れると、曲の展開を細かくコントロールできます。</p>
+
+            <div class="box ai-detail-item">
+                <h3>Claude</h3>
+                <p><strong>概要:</strong> Anthropicが開発した、安全性と長文処理能力に優れた対話型AIです。特に倫理的な配慮がされており、不適切な内容の生成を抑制するよう設計されています。</p>
+                <p><strong>使い方:</strong> 大量のテキストデータを一度に処理できるため、長文の要約や分析、契約書のレビューなどに適しています。</p>
+                <p><strong>活用例:</strong>
+                    <ul>
+                        <li>論文やレポートの要約</li>
+                        <li>契約書や規約のレビュー</li>
+                        <li>長文のメール作成支援</li>
+                        <li>複雑なトピックに関する情報整理</li>
+                    </ul>
+                </p>
+                <p><strong>コツ:</strong> 大量のテキストを扱う際に、特定のキーワードや論点を指定して要約させると、効率的に情報を抽出できます。</p>
             </div>
-            <div class="box tool-manual">
-                <h3>GenSpark (プレゼン資料)</h3>
-                <p><strong>基本:</strong> 「Create a new presentation about...」の入力欄に、作りたい資料のテーマを英語または日本語で入力します。<br>
-                   <strong>コツ:</strong> 「コーヒーショップの事業計画」のようなテーマだけでなく、「1. コンセプト, 2. ターゲット顧客, 3. メニュー, 4. 収支計画」のように、箇条書きでスライドの骨子を渡すと、意図に沿った構成のスライドが生成されやすくなります。</p>
+
+            <div class="box ai-detail-item">
+                <h3>SUNO</h3>
+                <p><strong>概要:</strong> テキストから音楽を生成するAIです。歌詞や曲調の指示を入力するだけで、ボーカル入りの楽曲を自動で作成します。</p>
+                <p><strong>使い方:</strong> 「Style of Music」にジャンル（J-POP, ロックなど）、「Lyrics」に歌詞を入力し、「Create」ボタンを押します。歌詞を自動生成させることも可能です。</p>
+                <p><strong>活用例:</strong>
+                    <ul>
+                        <li>オリジナル楽曲のデモ作成</li>
+                        <li>プレゼンテーションや動画のBGM制作</li>
+                        <li>イベントのテーマソング作成</li>
+                        <li>作詞・作曲のアイデア出し</li>
+                    </ul>
+                </p>
+                <p><strong>コツ:</strong> 歌詞の途中に `[Verse]`, `[Chorus]`, `[Bridge]`, `[Guitar Solo]` などの構成タグを入れると、曲の展開を細かくコントロールできます。具体的な楽器の指定も有効です。</p>
             </div>
-            <div class="box tool-manual">
-                <h3>Manus (マインドマップ)</h3>
-                <p><strong>基本:</strong> 生成したいマインドマップの中心テーマと、そこから広げたい項目を入力します。<br>
-                   <strong>コツ:</strong> テキストを階層構造（インデントや箇条書き）にして入力すると、親子関係が整理された綺麗なマインドマップが生成されます。ブレインストーミングの壁打ち相手として使うのも有効です。</p>
+
+            <div class="box ai-detail-item">
+                <h3>GenSpark</h3>
+                <p><strong>概要:</strong> AIが自動でプレゼンテーション資料を作成してくれるツールです。テーマやキーワードを入力するだけで、構成案からスライドデザインまでを提案します。</p>
+                <p><strong>使い方:</strong> 「Create a new presentation about...」の入力欄に、作成したいプレゼンのテーマを具体的に入力します。日本語での入力も可能です。</p>
+                <p><strong>活用例:</strong>
+                    <ul>
+                        <li>新規事業の企画書作成</li>
+                        <li>セミナー資料の骨子作成</li>
+                        <li>社内研修用スライドの自動生成</li>
+                        <li>アイデアを視覚化するためのクイックプロトタイプ</li>
+                    </ul>
+                </p>
+                <p><strong>コツ:</strong> テーマだけでなく、「1. コンセプト, 2. ターゲット顧客, 3. メニュー, 4. 収支計画」のように、箇条書きでスライドの骨子を渡すと、より意図に沿った構成のスライドが生成されやすくなります。</p>
+            </div>
+
+            <div class="box ai-detail-item">
+                <h3>Manus</h3>
+                <p><strong>概要:</strong> テキストからマインドマップを自動生成するAIツールです。アイデアの整理、ブレインストーミング、情報構造の可視化に役立ちます。</p>
+                <p><strong>使い方:</strong> マインドマップの中心となるテーマと、そこから派生するキーワードや概念をテキストで入力します。箇条書きやインデントで階層構造を示すと、より正確なマインドマップが生成されます。</p>
+                <p><strong>活用例:</strong>
+                    <ul>
+                        <li>プロジェクトのタスク分解</li>
+                        <li>ブログ記事の構成案作成</li>
+                        <li>学習内容の整理</li>
+                        <li>複雑な問題の原因分析</li>
+                    </ul>
+                </p>
+                <p><strong>コツ:</strong> 入力するテキストの階層構造を意識すると、AIがより論理的なマインドマップを作成してくれます。例えば、親ノードの後に子ノードをインデントして記述するなどです。</p>
             </div>
         </section>
 
@@ -454,17 +376,17 @@
                 </div>
                 <div class="box example-item">
                     <h3>2. GenSpark - AIでプレゼン資料</h3>
-                    <div class="thumbnail" data-type="pdf" data-src="./pdf/genspark.pdf#page=1">
+                    <a href="./pdf/genspark.pdf#page=1" target="_blank" class="thumbnail">
                         <div class="icon"><i class="fa-solid fa-file-powerpoint"></i></div>
                         <div>「事業計画」のPDFを開く</div>
-                    </div>
+                    </a>
                 </div>
                 <div class="box example-item">
                     <h3>3. Manus - AIでマインドマップ</h3>
-                     <div class="thumbnail" data-type="pdf" data-src="./pdf/manus.pdf#page=2">
+                     <a href="./pdf/manus.pdf#page=2" target="_blank" class="thumbnail">
                         <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
                         <div>「サイト制作工程」のPDFを開く</div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -533,21 +455,26 @@
             const thumbnails = document.querySelectorAll('.thumbnail');
 
             thumbnails.forEach(thumb => {
+                // Check if the thumbnail is an <a> tag (for PDF links)
+                if (thumb.tagName === 'A') {
+                    // For <a> tags, let the default link behavior handle it
+                    return;
+                }
+
+                // For other thumbnails (like SUNO iframes), use the modal
                 thumb.addEventListener('click', () => {
                     const src = thumb.dataset.src;
                     if (src) {
-                        // Lazy-load the iframe content
                         modalIframe.setAttribute('src', src);
                         modalOverlay.classList.add('active');
-                        document.body.classList.add('modal-open'); // Add class to body
+                        document.body.classList.add('modal-open');
                     }
                 });
             });
 
             function closeModal() {
                 modalOverlay.classList.remove('active');
-                document.body.classList.remove('modal-open'); // Remove class from body
-                // Stop video/audio playback by removing the src
+                document.body.classList.remove('modal-open');
                 modalIframe.setAttribute('src', '');
             }
 
