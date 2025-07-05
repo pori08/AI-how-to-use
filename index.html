@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>触ってわかる！最新生成AI 早見ガイド</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --main: #FFA8C5;
+            --sub: #FFF7FB;
+            --accent: #9BD3FF;
+            --text: #333;
+            --bg: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Noto Sans JP", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--sub);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background-color: var(--bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--main);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--main);
+        }
+
+        h2 {
+            margin: 2rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            text-align: center;
+        }
+
+        section {
+            padding: 40px 0;
+        }
+
+        .box {
+            background-color: var(--bg);
+            border-radius: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,.1);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .hero-img {
+            max-width: 300px;
+            margin: 24px auto;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            white-space: nowrap;
+        }
+        th, td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: var(--main);
+            color: white;
+            position: sticky;
+            left: 0;
+        }
+        td {
+            background-color: white;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        tbody tr:hover td {
+            background-color: var(--sub);
+        }
+
+        /* Examples */
+        .example-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        .example-item h3 {
+            margin-top: 0;
+        }
+        .example-item .thumbnail {
+            cursor: pointer;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: var(--sub);
+            border: 1px dashed var(--main);
+            text-align: center;
+            transition: background-color 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .example-item .thumbnail:hover {
+            background-color: #ffeaf2;
+        }
+        .thumbnail .icon {
+            font-size: 2rem;
+            color: var(--main);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Manuals */
+        .tool-manual h3 {
+            margin-top: 0;
+        }
+        .tool-manual p {
+            margin-bottom: 0;
+        }
+        .tool-manual strong {
+            color: var(--main);
+        }
+
+        /* How-to */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+        .step-card .icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .step-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            height: 80%;
+            max-height: 600px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+        }
+        .modal-iframe {
+            width: 100%;
+            height: calc(100% - 40px);
+            border: none;
+            margin-top: 20px;
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        footer a {
+            color: var(--main);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#tools">AI比較表</a>
+                <a href="#manuals">使い方解説</a>
+                <a href="#examples">活用事例</a>
+                <a href="#how-to">3ステップ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="hero" class="hero">
+            <h1>触ってわかる！最新生成AI 早見ガイド</h1>
+            <p>2025年版、無料で試せる６ツールを一気に体験</p>
+            <img src="https://storage.googleapis.com/app-assets-replit-com/images/1720158317313_3011c151d3b9615a4b6ac01e32218287.svg" alt="AI Illustration" class="hero-img">
+        </section>
+
+        <section id="tools">
+            <h2>AIツール比較表</h2>
+            <div class="box table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>主な生成物</th>
+                            <th>無料枠</th>
+                            <th>日本語UI</th>
+                            <th>スタート手順</th>
+                            <th>コツ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ChatGPT</td>
+                            <td>テキスト, コード</td>
+                            <td>あり</td>
+                            <td>✅</td>
+                            <td>Google/MSアカウント</td>
+                            <td>役割を与えて深掘り質問</td>
+                        </tr>
+                        <tr>
+                            <td>Gemini</td>
+                            <td>テキスト, 画像, コード</td>
+                            <td>あり</td>
+                            <td>✅</td>
+                            <td>Googleアカウント</td>
+                            <td>画像読み込みが得意</td>
+                        </tr>
+                        <tr>
+                            <td>Claude</td>
+                            <td>テキスト, コード</td>
+                            <td>あり</td>
+                            <td>✅</td>
+                            <td>メールアドレス</td>
+                            <td>長文PDFの要約・分析</td>
+                        </tr>
+                        <tr>
+                            <td>SUNO</td>
+                            <td>音楽, 楽曲</td>
+                            <td>あり</td>
+                            <td>✅</td>
+                            <td>Google/MSアカウント</td>
+                            <td>[Verse] [Chorus]で構成指示</td>
+                        </tr>
+                        <tr>
+                            <td>GenSpark</td>
+                            <td>プレゼン資料</td>
+                            <td>あり</td>
+                            <td>○</td>
+                            <td>Googleアカウント</td>
+                            <td>箇条書きで骨子を渡す</td>
+                        </tr>
+                        <tr>
+                            <td>Manus</td>
+                            <td>マインドマップ</td>
+                            <td>あり</td>
+                            <td>○</td>
+                            <td>Googleアカウント</td>
+                            <td>階層構造を意識して入力</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="manuals">
+            <h2>AIツール別ワンポイント解説</h2>
+            <div class="box tool-manual">
+                <h3>ChatGPT / Gemini / Claude (対話型)</h3>
+                <p><strong>基本:</strong> チャット画面に質問や命令をテキストで入力します。<br>
+                   <strong>コツ:</strong> あなたに「プロの編集者」「マーケター」といった役割を与えると、回答の質が向上します。「以下の文章を、小学生にも分かるように書き直して」「このサービスのキャッチコピーを10個考えて」のように、具体的な指示を出すのがポイントです。</p>
+            </div>
+            <div class="box tool-manual">
+                <h3>SUNO (音楽生成)</h3>
+                <p><strong>基本:</strong> 「Style of Music」に曲調（例: J-POP, City Pop）、「Lyrics」に歌詞を入力して「Create」を押します。<br>
+                   <strong>コツ:</strong> 歌詞の途中に [Verse] (Aメロ), [Chorus] (サビ), [Bridge] (Cメロ), [Guitar Solo] のような構成タグを入れると、曲の展開を細かくコントロールできます。</p>
+            </div>
+            <div class="box tool-manual">
+                <h3>GenSpark (プレゼン資料)</h3>
+                <p><strong>基本:</strong> 「Create a new presentation about...」の入力欄に、作りたい資料のテーマを英語または日本語で入力します。<br>
+                   <strong>コツ:</strong> 「コーヒーショップの事業計画」のようなテーマだけでなく、「1. コンセプト, 2. ターゲット顧客, 3. メニュー, 4. 収支計画」のように、箇条書きでスライドの骨子を渡すと、意図に沿った構成のスライドが生成されやすくなります。</p>
+            </div>
+            <div class="box tool-manual">
+                <h3>Manus (マインドマップ)</h3>
+                <p><strong>基本:</strong> 生成したいマインドマップの中心テーマと、そこから広げたい項目を入力します。<br>
+                   <strong>コツ:</strong> テキストを階層構造（インデントや箇条書き）にして入力すると、親子関係が整理された綺麗なマインドマップが生成されます。ブレインストーミングの壁打ち相手として使うのも有効です。</p>
+            </div>
+        </section>
+
+        <section id="examples">
+            <h2>活用事例セクション</h2>
+            <div class="example-grid">
+                <div class="box example-item">
+                    <h3>1. SUNO - AIで作曲</h3>
+                    <div class="thumbnail" data-type="iframe" data-src="https://suno.com/embed/s/zm3TEFJsqPPCUElB">
+                        <div class="icon"><i class="fa-solid fa-music"></i></div>
+                        <div>「夏、青春、炭酸水」の曲を再生</div>
+                    </div>
+                     <div class="thumbnail" style="margin-top:1rem" data-type="iframe" data-src="https://suno.com/embed/s/MmfEKVcQBVCJ4RX6">
+                        <div class="icon"><i class="fa-solid fa-music"></i></div>
+                        <div>「企業VP、壮大、感動的」のBGMを再生</div>
+                    </div>
+                </div>
+                <div class="box example-item">
+                    <h3>2. GenSpark - AIでプレゼン資料</h3>
+                    <div class="thumbnail" data-type="pdf" data-src="/pdf/genspark.pdf#page=1">
+                        <div class="icon"><i class="fa-solid fa-file-powerpoint"></i></div>
+                        <div>「事業計画」のPDFを開く</div>
+                    </div>
+                </div>
+                <div class="box example-item">
+                    <h3>3. Manus - AIでマインドマップ</h3>
+                     <div class="thumbnail" data-type="pdf" data-src="/pdf/manus.pdf#page=2">
+                        <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+                        <div>「サイト制作工程」のPDFを開く</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to">
+            <h2>使い方はかんたん3ステップ</h2>
+            <div class="steps-grid">
+                <div class="box step-card">
+                    <div class="icon"><i class="fa-solid fa-user-plus"></i></div>
+                    <h3>1. 登録</h3>
+                    <p>メールアドレスやGoogleアカウントで無料登録。</p>
+                </div>
+                <div class="box step-card">
+                    <div class="icon"><i class="fa-solid fa-keyboard"></i></div>
+                    <h3>2. 入力</h3>
+                    <p>作りたいものを日本語で入力・指示するだけ。</p>
+                </div>
+                <div class="box step-card">
+                    <div class="icon"><i class="fa-solid fa-share-nodes"></i></div>
+                    <h3>3. 共有</h3>
+                    <p>できた作品はリンクで簡単にシェアできる。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                <a href="https://github.com/pori08/AI-how-to-use" target="_blank" rel="noopener noreferrer">GitHub Repository ↗︎</a> | 
+                <a href="mailto:info@example.com">Contact</a>
+            </p>
+            <p>© 2025 AI Guide</p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <iframe class="modal-iframe" id="modal-iframe" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // --- Smooth Scroll ---
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // --- Modal Logic ---
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalIframe = document.getElementById('modal-iframe');
+            const modalClose = document.getElementById('modal-close');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const src = thumb.dataset.src;
+                    if (src) {
+                        // Lazy-load the iframe content
+                        modalIframe.setAttribute('src', src);
+                        modalOverlay.classList.add('active');
+                    }
+                });
+            });
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                // Stop video/audio playback by removing the src
+                modalIframe.setAttribute('src', '');
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
