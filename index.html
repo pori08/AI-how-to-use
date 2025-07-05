@@ -30,6 +30,10 @@
             line-height: 1.7;
         }
 
+        body.modal-open {
+            overflow: hidden;
+        }
+
         .container {
             max-width: 960px;
             margin: 0 auto;
@@ -135,6 +139,54 @@
             background-color: var(--sub);
         }
 
+        /* Mobile Table */
+        @media (max-width: 768px) {
+            .table-container {
+                overflow-x: hidden;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 1rem;
+                border-radius: 16px;
+                overflow: hidden;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:last-child {
+                border-bottom: none;
+            }
+            td::before {
+                position: absolute;
+                top: 0;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--main);
+            }
+            td:nth-of-type(1)::before { content: "Name:"; }
+            td:nth-of-type(2)::before { content: "主な生成物:"; }
+            td:nth-of-type(3)::before { content: "無料枠:"; }
+            td:nth-of-type(4)::before { content: "日本語UI:"; }
+            td:nth-of-type(5)::before { content: "スタート手順:"; }
+            td:nth-of-type(6)::before { content: "コツ:"; }
+        }
+
         /* Examples */
         .example-grid {
             display: grid;
@@ -225,6 +277,16 @@
             position: relative;
             transform: scale(0.9);
             transition: transform 0.3s;
+        }
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                height: 90%;
+                padding: 15px;
+            }
+            .modal-iframe {
+                height: calc(100% - 30px);
+            }
         }
         .modal-overlay.active .modal-content {
             transform: scale(1);
@@ -477,12 +539,14 @@
                         // Lazy-load the iframe content
                         modalIframe.setAttribute('src', src);
                         modalOverlay.classList.add('active');
+                        document.body.classList.add('modal-open'); // Add class to body
                     }
                 });
             });
 
             function closeModal() {
                 modalOverlay.classList.remove('active');
+                document.body.classList.remove('modal-open'); // Remove class from body
                 // Stop video/audio playback by removing the src
                 modalIframe.setAttribute('src', '');
             }
