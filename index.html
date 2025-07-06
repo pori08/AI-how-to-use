@@ -123,8 +123,8 @@
             color: #666;
         }
         .hero-img {
-            max-width: 100%; /* 修正 */
-            height: auto; /* 修正 */
+            max-width: 100%;
+            height: auto;
             margin: 24px auto;
         }
 
@@ -155,8 +155,8 @@
         /* Examples */
         .example-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 修正 */
-            gap: 1.5rem; /* 修正 */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             place-items: stretch; /* 追加 */
         }
         .example-item h3 {
@@ -177,6 +177,9 @@
             align-items: center;
             max-width: 100%;
             overflow-wrap: anywhere;
+            width: 100%; /* 追加 */
+            min-width: 0; /* 追加 */
+            box-sizing: border-box; /* 追加 */
         }
         .example-item .thumbnail:hover {
             background-color: #ffeaf2;
@@ -186,6 +189,8 @@
             color: var(--main);
             margin-bottom: 0.5rem;
         }
+        .thumbnail div, /* 追加 */
+        .thumbnail span{overflow-wrap:anywhere;word-break:break-word;} /* 追加 */
         
         /* SUNO Card */
         .suno-card {
@@ -328,7 +333,7 @@
         <section id="hero" class="hero">
             <h1>触ってわかる！最新生成AI 早見ガイド</h1>
             <p>2025年版、無料で試せる６ツールを一気に体験</p>
-            <img src="./assets/hero.svg" alt="AI Illustration" class="hero-img" style="max-width:100%;height:auto">
+            <img src="./assets/hero.svg" alt="AI Illustration" class="hero-img">
         </section>
 
         <section id="ai-details">
@@ -432,15 +437,19 @@
                     <p>1990年代J-POP風楽曲</p>
                     <a class="suno-card"
                        href="https://suno.com/s/MmfEKVcQBVCJ4RX6" target="_blank" rel="noopener">
-                        <img src="assets/suno_jpop.webp"
-                             alt="1990年代J-POP カバー">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/suno_mmfekv.webp">
+                            <img src="./assets/suno_mmfekv.png" alt="1990年代J-POP カバー">
+                        </picture>
                         <span>1990年代J-POP風 ▶ 再生</span>
                     </a>
                     <p>ボカロ風楽曲</p>
                     <a class="suno-card"
                        href="https://suno.com/s/zm3TEFJsqPPCUElB" target="_blank" rel="noopener">
-                        <img src="assets/suno_vocaloid.webp"
-                             alt="ボカロ曲カバー">
+                        <picture>
+                            <source type="image/webp" srcset="./assets/suno_zm3tefj.webp">
+                            <img src="./assets/suno_zm3tefj.png" alt="ボカロ曲カバー">
+                        </picture>
                         <span>ボカロ風 ▶ 再生</span>
                     </a>
                 </div>
