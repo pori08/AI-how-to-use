@@ -155,9 +155,8 @@
         /* Examples */
         .example-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            place-items: stretch; /* 追加 */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 修正 */
+            gap: 16px; /* 修正 */
         }
         .example-item h3 {
             margin-top: 0;
@@ -170,27 +169,26 @@
             border: 1px dashed var(--main);
             text-align: center;
             transition: background-color 0.3s;
-            height: 100%;
+            height: clamp(160px, 35vw, 240px); /* 修正 */
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            max-width: 100%;
-            overflow-wrap: anywhere;
-            width: 100%; /* 追加 */
-            min-width: 0; /* 追加 */
-            box-sizing: border-box; /* 追加 */
+            justify-content: center;
+            width: 100%; /* 修正 */
+            max-width: 100%; /* 修正 */
+            min-width: 0; /* 修正 */
+            box-sizing: border-box; /* 修正 */
         }
         .example-item .thumbnail:hover {
             background-color: #ffeaf2;
         }
         .thumbnail .icon {
-            font-size: 2.2rem;
+            font-size: 2rem; /* 修正 */
             color: var(--main);
             margin-bottom: 0.5rem;
         }
-        .thumbnail div, /* 追加 */
-        .thumbnail span{overflow-wrap:anywhere;word-break:break-word;} /* 追加 */
+        .thumbnail div, 
+        .thumbnail span{overflow-wrap:anywhere;word-break:break-word;} /* 修正 */
         
         /* SUNO Card */
         .suno-card {
@@ -219,6 +217,11 @@
             text-align: center;
             font-weight: bold;
             color: var(--main);
+        }
+
+        /* SUNO カード画像はモバイルで非表示 */
+        @media(max-width:600px){
+            .suno-card img{display:none;}
         }
 
         /* How-to */
