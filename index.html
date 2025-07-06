@@ -73,7 +73,7 @@
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
         }
 
         h2 {
@@ -90,6 +90,10 @@
 
         section {
             padding: 50px 0;
+        }
+
+        section + section {
+            margin-top: 4rem;
         }
 
         .box {
@@ -178,12 +182,34 @@
             color: var(--main);
             margin-bottom: 0.5rem;
         }
-        .suno-embed {
+        
+        /* SUNO Card */
+        .suno-card {
+            display: block;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+            transition: .3s;
+            text-decoration: none; /* Remove underline from link */
+            color: var(--text); /* Inherit text color */
+            margin-bottom: 1rem; /* Add margin for spacing between cards */
+        }
+        .suno-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,.12);
+        }
+        .suno-card img {
             width: 100%;
-            height: 180px;
-            border: none;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            height: auto;
+            display: block;
+        }
+        .suno-card span {
+            display: block;
+            padding: 8px 12px;
+            background: var(--sub);
+            text-align: center;
+            font-weight: bold;
+            color: var(--main);
         }
 
         /* How-to */
@@ -202,7 +228,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Modal */
+        /* Modal (kept for potential future use, but not actively used for SUNO) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -298,7 +324,7 @@
         <section id="hero" class="hero">
             <h1>触ってわかる！最新生成AI 早見ガイド</h1>
             <p>2025年版、無料で試せる６ツールを一気に体験</p>
-            <img src="https://undraw.co/illustrations/artificial_intelligence_o48g.svg" alt="AI Illustration" class="hero-img">
+            <img src="assets/hero.svg" alt="AI Illustration" class="hero-img">
         </section>
 
         <section id="ai-details">
@@ -400,9 +426,15 @@
                 <div class="box example-item">
                     <h3>1. SUNO - AIで作曲</h3>
                     <p>1990年代J-POP風楽曲</p>
-                    <iframe class="suno-embed" src="https://suno.com/embed/s/MmfEKVcQBVCJ4RX6" frameborder="0" allowfullscreen></iframe>
+                    <a class="suno-card" href="https://suno.com/song/MmfEKVcQBVCJ4RX6" target="_blank" rel="noopener">
+                        <img src="https://suno.com/song/MmfEKVcQBVCJ4RX6/cover.webp" alt="1990年代J-POP カバー">
+                        <span>1990年代J-POP風 ▶ 再生</span>
+                    </a>
                     <p>ボカロ風楽曲</p>
-                    <iframe class="suno-embed" src="https://suno.com/embed/s/zm3TEFJsqPPCUElB" frameborder="0" allowfullscreen></iframe>
+                    <a class="suno-card" href="https://suno.com/song/zm3TEFJsqPPCUElB" target="_blank" rel="noopener">
+                        <img src="https://suno.com/song/zm3TEFJsqPPCUElB/cover.webp" alt="ボカロ曲カバー">
+                        <span>ボカロ風 ▶ 再生</span>
+                    </a>
                 </div>
                 <div class="box example-item">
                     <h3>2. GenSpark - AIでプレゼン資料</h3>
@@ -453,13 +485,6 @@
         </div>
     </footer>
 
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-content">
-            <span class="modal-close" id="modal-close">&times;</span>
-            <iframe class="modal-iframe" id="modal-iframe" src="" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // --- Smooth Scroll ---
@@ -478,11 +503,13 @@
                 });
             });
 
-            // --- Modal Logic (Simplified for SUNO only) ---
+            // --- Modal Logic (Removed SUNO specific parts) ---
             const modalOverlay = document.getElementById('modal-overlay');
             const modalIframe = document.getElementById('modal-iframe');
             const modalClose = document.getElementById('modal-close');
+            
             // No longer using thumbnails for modal, SUNO is directly embedded
+            // PDF links are now direct <a> tags
 
             function closeModal() {
                 modalOverlay.classList.remove('active');
