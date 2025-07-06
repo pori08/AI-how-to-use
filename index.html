@@ -155,8 +155,8 @@
         /* Examples */
         .example-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 修正 */
-            gap: 16px; /* 修正 */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
         }
         .example-item h3 {
             margin-top: 0;
@@ -169,26 +169,26 @@
             border: 1px dashed var(--main);
             text-align: center;
             transition: background-color 0.3s;
-            height: clamp(160px, 35vw, 240px); /* 修正 */
+            height: clamp(160px, 35vw, 240px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%; /* 修正 */
-            max-width: 100%; /* 修正 */
-            min-width: 0; /* 修正 */
-            box-sizing: border-box; /* 修正 */
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
         }
         .example-item .thumbnail:hover {
             background-color: #ffeaf2;
         }
         .thumbnail .icon {
-            font-size: 2rem; /* 修正 */
+            font-size: 2rem;
             color: var(--main);
             margin-bottom: 0.5rem;
         }
         .thumbnail div, 
-        .thumbnail span{overflow-wrap:anywhere;word-break:break-word;} /* 修正 */
+        .thumbnail span{overflow-wrap:anywhere;word-break:break-word;}
         
         /* SUNO Card */
         .suno-card {
@@ -318,6 +318,18 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Mobile specific overrides for example-grid and thumbnail */
+        @media (max-width:480px){
+            .example-grid{
+                grid-template-columns:1fr;   /* 強制 1 カラム */
+                gap:12px;
+            }
+            .thumbnail{
+                height:auto;                 /* clamp を上書き */
+                padding:20px 12px;           /* 内側余白で見た目を整える */
+            }
+        }
     </style>
 </head>
 <body>
@@ -336,6 +348,7 @@
         <section id="hero" class="hero">
             <h1>触ってわかる！最新生成AI 早見ガイド</h1>
             <p>2025年版、無料で試せる６ツールを一気に体験</p>
+            <p class="note">このページは Gemini CLI と GitHub Actions だけで自動生成・更新しています。</p>
             <img src="./assets/hero.svg" alt="AI Illustration" class="hero-img">
         </section>
 
@@ -353,7 +366,9 @@
                         <li>アイデア出しのブレインストーミング</li>
                     </ul>
                 </p>
-                <p><strong>強み:</strong> 無料枠でも画像生成を含む多様なマルチモーダル出力。新モデル“o3”による推論が高速・高精度。</p>
+                <p><strong>強み:</strong> 画像や音声も作れる多機能チャット。拡張プラグインが豊富。</p>
+                <p><strong>注意点:</strong> 無料プランでは GPT-4 が使えない。</p>
+                <p><strong>公式サイト:</strong> <a href="https://chat.openai.com/" target="_blank" rel="noopener">chat.openai.com</a></p>
             </div>
 
             <div class="box ai-detail-item">
@@ -368,7 +383,9 @@
                         <li>動画の内容を要約し、ハイライトを抽出</li>
                     </ul>
                 </p>
-                <p><strong>強み:</strong> 英文入力・出力に非常に強く、**ものすごいテキスト量を扱える**。画像/音声/コード/動画を同時に扱えるフルマルチモーダル。Google 検索とも連携可。</p>
+                <p><strong>強み:</strong> 100万トークンの超長文を一度に扱える。画像・音声・コードも同時に理解。</p>
+                <p><strong>注意点:</strong> 一部機能はまだ試験運用。</p>
+                <p><strong>公式サイト:</strong> <a href="https://gemini.google.com/" target="_blank" rel="noopener">gemini.google.com</a></p>
             </div>
 
             <div class="box ai-detail-item">
@@ -383,7 +400,9 @@
                         <li>複雑なトピックに関する情報整理</li>
                     </ul>
                 </p>
-                <p><strong>強み:</strong> 超長文を一括処理できるコンテキスト長と、“編集者目線” の自然な文章生成。コード解析にも定評。</p>
+                <p><strong>強み:</strong> 編集者のように読みやすい文章を作る。コード解析も得意。</p>
+                <p><strong>注意点:</strong> 無料プランは 200k トークン制限。</p>
+                <p><strong>公式サイト:</strong> <a href="https://claude.ai/" target="_blank" rel="noopener">claude.ai</a></p>
             </div>
 
             <div class="box ai-detail-item">
@@ -399,6 +418,8 @@
                     </ul>
                 </p>
                 <p><strong>強み:</strong> 歌入り楽曲をワンクリック生成。構成タグでAメロ/サビなど細部を制御できる稀少な作曲特化 AI。</p>
+                <p><strong>注意点:</strong> 無料枠は 50 曲／日・30 秒まで。</p>
+                <p><strong>公式サイト:</strong> <a href="https://suno.com/" target="_blank" rel="noopener">suno.com</a></p>
             </div>
 
             <div class="box ai-detail-item">
@@ -413,7 +434,9 @@
                         <li>アイデアを視覚化するためのクイックプロトタイプ</li>
                     </ul>
                 </p>
-                <p><strong>強み:</strong> テーマと箇条書きを渡すだけで全スライドを自動構成。**デザイン性が高く、情報量の多い資料を短時間で作成可能。無料枠は1日1回まで。**</p>
+                <p><strong>強み:</strong> テーマと箇条書きを渡すだけで全スライドを自動構成。デザイン性が高く、情報量の多い資料を短時間で作成可能。</p>
+                <p><strong>注意点:</strong> 無料版は 1 日 1 回まで。</p>
+                <p><strong>公式サイト:</strong> <a href="https://www.genspark.ai/" target="_blank" rel="noopener">genspark.ai</a></p>
             </div>
 
             <div class="box ai-detail-item">
@@ -428,7 +451,25 @@
                         <li>特定の情報に基づいた自動メール作成</li>
                     </ul>
                 </p>
-                <p><strong>強み:</strong> マークダウン感覚で指示→完成度の高い資料に変換。AI エージェントとして各種タスク自動化も可能。**無料枠は300クレジット（指示内容により消費クレジット変動）。資料全体のデザインを細かく指示でき、ロゴや色指定などビジネスシーンに特化した資料作成が可能。**</p>
+                <p><strong>強み:</strong> マークダウン感覚で指示→完成度の高い資料に変換。AI エージェントとして各種タスク自動化も可能。資料全体のデザインを細かく指示でき、ロゴや色指定などビジネスシーンに特化した資料作成が可能。</p>
+                <p><strong>注意点:</strong> 無料クレジット 300。操作が多いとすぐ使い切る。</p>
+                <p><strong>公式サイト:</strong> <a href="https://www.manus.ai/" target="_blank" rel="noopener">manus.ai</a></p>
+            </div>
+
+            <div class="box ai-detail-item">
+                <h3>Google Veo 3</h3>
+                <p><strong>概要:</strong> Google の最新動画生成 AI。テキストだけで 1080p／60 秒動画を作れます。</p>
+                <p><strong>使い方:</strong> 「海辺の夕日をタイムラプス風で」など文章を入れて「Generate」ボタンを押します。</p>
+                <p><strong>活用例:</strong>
+                    <ul>
+                        <li>SNS 動画</li>
+                        <li>広告ティザー</li>
+                        <li>教材アニメ</li>
+                    </ul>
+                </p>
+                <p><strong>強み:</strong> 動きが自然で長尺も OK。1 回で複数スタイルをプレビュー。</p>
+                <p><strong>注意点:</strong> 招待制ベータ中で本数制限あり。</p>
+                <p><strong>公式サイト:</strong> <a href="https://labs.google/veo" target="_blank" rel="noopener">labs.google/veo</a></p>
             </div>
         </section>
 
@@ -468,6 +509,14 @@
                      <a href="./pdf/manus.pdf#page=2" target="_blank" class="thumbnail">
                         <div class="icon"><i class="fa-solid fa-file-lines"></i></div>
                         <div>「サイト制作工程」のPDFを開く</div>
+                    </a>
+                </div>
+                <div class="box example-item">
+                    <h3>4. Veo 3 – AIで動画生成</h3>
+                    <p>夕焼けの海をタイムラプス風で生成</p>
+                    <a class="thumbnail" href="https://labs.google/veo" target="_blank" rel="noopener">
+                        <div class="icon"><i class="fa-solid fa-film"></i></div>
+                        <div>公式ページでサンプル動画を見る</div>
                     </a>
                 </div>
             </div>
