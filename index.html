@@ -123,7 +123,8 @@
             color: #666;
         }
         .hero-img {
-            max-width: 300px;
+            max-width: 100%; /* 修正 */
+            height: auto; /* 修正 */
             margin: 24px auto;
         }
 
@@ -154,8 +155,8 @@
         /* Examples */
         .example-grid {
             display: grid;
-            gap: 24px;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 修正 */
+            gap: 1.5rem; /* 修正 */
         }
         .example-item h3 {
             margin-top: 0;
@@ -326,7 +327,7 @@
         <section id="hero" class="hero">
             <h1>触ってわかる！最新生成AI 早見ガイド</h1>
             <p>2025年版、無料で試せる６ツールを一気に体験</p>
-            <img src="assets/hero.svg" alt="AI Illustration" class="hero-img">
+            <img src="./assets/hero.svg" alt="AI Illustration" class="hero-img" style="max-width:100%;height:auto">
         </section>
 
         <section id="ai-details">
