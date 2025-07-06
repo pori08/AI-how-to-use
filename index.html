@@ -72,23 +72,38 @@
             color: var(--main);
         }
 
+        h1 {
+            font-size: 2.2rem;
+        }
+
         h2 {
-            margin: 2rem 0 1.5rem;
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 3px solid var(--accent);
             text-align: center;
         }
 
+        h3 {
+            font-size: 1.4rem;
+        }
+
         section {
-            padding: 40px 0;
+            padding: 50px 0;
         }
 
         .box {
             background-color: var(--bg);
             border-radius: 16px;
-            box-shadow: 0 2px 6px rgba(0,0,0,.1);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
             padding: 24px;
             margin-bottom: 24px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
         }
 
         /* Hero Section */
@@ -97,7 +112,6 @@
             padding: 60px 0;
         }
         .hero h1 {
-            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
         .hero p {
@@ -107,6 +121,30 @@
         .hero-img {
             max-width: 300px;
             margin: 24px auto;
+        }
+
+        /* AI Details */
+        .ai-detail-item h3 {
+            margin-top: 0;
+        }
+        .ai-detail-item p {
+            margin-bottom: 0.5rem;
+        }
+        .ai-detail-item strong {
+            color: var(--main);
+        }
+        .ai-detail-item ul {
+            list-style: none;
+            padding-left: 1.2rem;
+        }
+        .ai-detail-item ul li::before {
+            content: "\f00c"; /* Font Awesome check icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--accent);
+            display: inline-block;
+            width: 1.2em;
+            margin-left: -1.2em;
         }
 
         /* Examples */
@@ -140,16 +178,12 @@
             color: var(--main);
             margin-bottom: 0.5rem;
         }
-        
-        /* AI Details */
-        .ai-detail-item h3 {
-            margin-top: 0;
-        }
-        .ai-detail-item p {
-            margin-bottom: 0.5rem;
-        }
-        .ai-detail-item strong {
-            color: var(--main);
+        .suno-embed {
+            width: 100%;
+            height: 180px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 1rem;
         }
 
         /* How-to */
@@ -264,7 +298,7 @@
         <section id="hero" class="hero">
             <h1>触ってわかる！最新生成AI 早見ガイド</h1>
             <p>2025年版、無料で試せる６ツールを一気に体験</p>
-            <img src="https://storage.googleapis.com/app-assets-replit-com/images/1720158317313_3011c151d3b9615a4b6ac01e32218287.svg" alt="AI Illustration" class="hero-img">
+            <img src="https://undraw.co/illustrations/artificial-intelligence_ebpk.svg" alt="AI Illustration" class="hero-img">
         </section>
 
         <section id="ai-details">
@@ -346,17 +380,17 @@
 
             <div class="box ai-detail-item">
                 <h3>Manus</h3>
-                <p><strong>概要:</strong> テキストからマインドマップを自動生成するAIツールです。アイデアの整理、ブレインストーミング、情報構造の可視化に役立ちます。</p>
-                <p><strong>使い方:</strong> マインドマップの中心となるテーマと、そこから派生するキーワードや概念をテキストで入力します。箇条書きやインデントで階層構造を示すと、より正確なマインドマップが生成されます。</p>
+                <p><strong>概要:</strong> AIを活用した資料作成ツールであり、AIエージェントとしての機能も持ち合わせています。テキストや指示に基づいて、プレゼンテーション、レポート、企画書などのドキュメントを効率的に生成・編集できます。また、情報収集やタスクの自動化といったエージェント的な役割も果たします。</p>
+                <p><strong>使い方:</strong> 作成したい資料の種類と内容を具体的に指示します。例えば、「〇〇に関するプレゼンテーション資料を作成して」「このデータからレポートを生成して」といった形で入力します。AIエージェント機能を利用する場合は、実行したいタスクを明確に伝えます。</p>
                 <p><strong>活用例:</strong>
                     <ul>
-                        <li>プロジェクトのタスク分解</li>
-                        <li>ブログ記事の構成案作成</li>
-                        <li>学習内容の整理</li>
-                        <li>複雑な問題の原因分析</li>
+                        <li>会議資料の自動生成と要点整理</li>
+                        <li>市場調査レポートの作成支援</li>
+                        <li>営業提案書のパーソナライズ</li>
+                        <li>特定の情報に基づいた自動メール作成</li>
                     </ul>
                 </p>
-                <p><strong>コツ:</strong> 入力するテキストの階層構造を意識すると、AIがより論理的なマインドマップを作成してくれます。例えば、親ノードの後に子ノードをインデントして記述するなどです。</p>
+                <p><strong>コツ:</strong> 資料の目的、ターゲット、含めたい情報、希望するトーンなどを具体的に伝えることで、より精度の高い資料が生成されます。AIエージェント機能では、タスクの範囲と期待するアウトプットを明確にすることが重要です。</p>
             </div>
         </section>
 
@@ -365,14 +399,10 @@
             <div class="example-grid">
                 <div class="box example-item">
                     <h3>1. SUNO - AIで作曲</h3>
-                    <div class="thumbnail" data-type="iframe" data-src="https://suno.com/embed/s/zm3TEFJsqPPCUElB">
-                        <div class="icon"><i class="fa-solid fa-music"></i></div>
-                        <div>「夏、青春、炭酸水」の曲を再生</div>
-                    </div>
-                     <div class="thumbnail" style="margin-top:1rem" data-type="iframe" data-src="https://suno.com/embed/s/MmfEKVcQBVCJ4RX6">
-                        <div class="icon"><i class="fa-solid fa-music"></i></div>
-                        <div>「企業VP、壮大、感動的」のBGMを再生</div>
-                    </div>
+                    <p>1990年代J-POP風楽曲</p>
+                    <iframe class="suno-embed" src="https://suno.com/embed/s/MmfEKVcQBVCJ4RX6" frameborder="0" allowfullscreen></iframe>
+                    <p>ボカロ風楽曲</p>
+                    <iframe class="suno-embed" src="https://suno.com/embed/s/zm3TEFJsqPPCUElB" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="box example-item">
                     <h3>2. GenSpark - AIでプレゼン資料</h3>
@@ -382,9 +412,9 @@
                     </a>
                 </div>
                 <div class="box example-item">
-                    <h3>3. Manus - AIでマインドマップ</h3>
+                    <h3>3. Manus - AIで資料作成・エージェント</h3>
                      <a href="./pdf/manus.pdf#page=2" target="_blank" class="thumbnail">
-                        <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+                        <div class="icon"><i class="fa-solid fa-file-lines"></i></div>
                         <div>「サイト制作工程」のPDFを開く</div>
                     </a>
                 </div>
@@ -448,29 +478,11 @@
                 });
             });
 
-            // --- Modal Logic ---
+            // --- Modal Logic (Simplified for SUNO only) ---
             const modalOverlay = document.getElementById('modal-overlay');
             const modalIframe = document.getElementById('modal-iframe');
             const modalClose = document.getElementById('modal-close');
-            const thumbnails = document.querySelectorAll('.thumbnail');
-
-            thumbnails.forEach(thumb => {
-                // Check if the thumbnail is an <a> tag (for PDF links)
-                if (thumb.tagName === 'A') {
-                    // For <a> tags, let the default link behavior handle it
-                    return;
-                }
-
-                // For other thumbnails (like SUNO iframes), use the modal
-                thumb.addEventListener('click', () => {
-                    const src = thumb.dataset.src;
-                    if (src) {
-                        modalIframe.setAttribute('src', src);
-                        modalOverlay.classList.add('active');
-                        document.body.classList.add('modal-open');
-                    }
-                });
-            });
+            // No longer using thumbnails for modal, SUNO is directly embedded
 
             function closeModal() {
                 modalOverlay.classList.remove('active');
