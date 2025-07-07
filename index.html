@@ -190,6 +190,32 @@
         .thumbnail div, 
         .thumbnail span{overflow-wrap:anywhere;word-break:break-word;}
         
+        /* Ability Table */
+        .ability {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .ability th, .ability td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .ability th {
+            background-color: var(--accent);
+            color: #fff;
+            font-weight: bold;
+        }
+        .ability tbody tr:nth-child(even) {
+            background-color: var(--sub);
+        }
+        .ability tbody tr:hover {
+            background-color: #ffeaf2;
+        }
+
         /* SUNO Card */
         .suno-card {
             display: block;
